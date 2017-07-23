@@ -2,23 +2,16 @@ console.log('The bot is starting');
 
 var Twit = require('twit');
 // require : for node it is like import the package
-// https://github.com/ttezel/twit 
-// trouvé sur npmjs.com
-// https://dev.twitter.com/
-// manage my apps
-// create my app
-// twilio pour avoir un autre numéro de tel
 
 var config = require ('./config');
 // console.log(config);
 var T = new Twit(config);
 
-
-
 // setting a user stream (T c'est ma connexion au twitter package, à l'API)
 var stream = T.stream("user");
 
-// anytime someone follows me
+// UN ROBOT QUI RÉPOND SI ON LE SUIT, OU ON LE LIKE
+// anytime someone follows me, unfollows me, or favors me
 stream.on("follow", followed);
 stream.on("unfollow", unfollowed);
 stream.on("favorite", favored);
@@ -47,7 +40,7 @@ function favored(eventMsg) {
 }
 
 
-
+// UN ROBOT QUI PRÉVOIT ALÉATOIREMENT LES SCORES DE FILLON
 // tweetIt();
 // c'est des millisecondes : 1000*60 c'est 1 minute
 // setInterval(tweetIt, 1000*60*2)
